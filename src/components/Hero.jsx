@@ -5,207 +5,218 @@ import {
   Mail, 
   Github, 
   Linkedin, 
+  Sparkles, 
   MapPin, 
   GraduationCap, 
-  Briefcase, 
   Code2, 
-  Star, 
-  GitFork, 
-  Eye, 
   Terminal,
-  BookOpen,
-  FolderGit2,
+  Layers,
+  Briefcase,
   CheckCircle2,
-  Sparkles
+  Cpu
 } from 'lucide-react';
 import { personalInfo, allProjects, internships } from '../data/portfolioData';
 
 export default function Hero({ onOpenResume }) {
   return (
-    <section id="hero" className="bg-[#ffffff] pt-8 pb-10 border-b border-[#d0d7de]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Topic Banner Header like github.com/topics/portfolio-project */}
-        <div className="gh-box mb-8 p-6 bg-[#f6f8fa] border-[#d0d7de] flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="space-y-2">
-            <div className="flex items-center space-x-2 text-xs font-semibold text-[#0969da]">
-              <span className="px-2 py-0.5 rounded-full bg-[#ddf4ff] border border-[#0969da]/20">
-                # portfolio-project
-              </span>
-              <span className="text-[#656d76]">•</span>
-              <span className="text-[#656d76]">developer-portfolio</span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#1f2328] tracking-tight">
-              {personalInfo.name} — <span className="font-normal text-[#656d76]">{personalInfo.role}</span>
-            </h1>
-            <p className="text-sm text-[#656d76] max-w-3xl leading-relaxed">
-              "{personalInfo.tagline}" — {personalInfo.heroDescription}
-            </p>
-          </div>
+    <section id="hero" className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-20 overflow-hidden bg-gradient-to-b from-[#FAF5FF]/60 via-[#F8FAFC] to-[#FFFFFF]">
+      {/* Luminous Ambient Colorful Glow Orbs */}
+      <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-indigo-400/20 to-purple-400/20 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-slow" />
+      <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-full blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-gradient-to-tr from-pink-400/15 to-rose-400/15 rounded-full blur-[120px] pointer-events-none -z-10" />
 
-          <div className="flex flex-wrap items-center gap-2 self-start md:self-center flex-shrink-0">
-            <a
-              href={personalInfo.social.github.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gh-btn text-xs font-semibold"
-            >
-              <Github className="w-4 h-4 text-[#1f2328]" />
-              <span>Follow</span>
-            </a>
-            <button
-              onClick={onOpenResume}
-              className="gh-btn text-xs font-semibold"
-            >
-              <Download className="w-3.5 h-3.5 text-[#0969da]" />
-              <span>Resume</span>
-            </button>
-            <a
-              href="#contact"
-              className="gh-btn-primary text-xs"
-            >
-              <Mail className="w-3.5 h-3.5" />
-              <span>Get In Touch</span>
-            </a>
-          </div>
-        </div>
-
-        {/* Profile Details & Metadata Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Column: Developer Profile Details Card */}
-          <div className="lg:col-span-4 space-y-5">
-            <div className="gh-box p-6 space-y-4">
-              
-              {/* Profile Avatar & Identity */}
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 rounded-full bg-[#f6f8fa] border-2 border-[#d0d7de] flex items-center justify-center text-[#1f2328] shadow-xs">
-                  <Code2 className="w-8 h-8 text-[#0969da]" />
-                </div>
-                <div>
-                  <h2 className="text-xl font-bold text-[#1f2328] leading-tight">
-                    {personalInfo.name}
-                  </h2>
-                  <div className="text-sm text-[#656d76]">
-                    @{personalInfo.username}
-                  </div>
-                </div>
-              </div>
-
-              {/* Status Quote */}
-              <div className="text-xs text-[#1f2328] bg-[#f6f8fa] p-3 rounded-md border border-[#d0d7de] italic">
-                "{personalInfo.tagline}"
-              </div>
-
-              {/* Bio Details */}
-              <div className="space-y-2.5 text-xs text-[#656d76] pt-1 border-t border-[#d0d7de]">
-                <div className="flex items-center space-x-2 text-[#1f2328]">
-                  <Briefcase className="w-4 h-4 text-[#656d76] flex-shrink-0" />
-                  <span className="font-medium">{personalInfo.role}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4 text-[#656d76] flex-shrink-0" />
-                  <span>{personalInfo.location.origin}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <GraduationCap className="w-4 h-4 text-[#656d76] flex-shrink-0" />
-                  <span>AKGEC • Computer Science</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Github className="w-4 h-4 text-[#656d76] flex-shrink-0" />
-                  <a 
-                    href={personalInfo.social.github.url} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="text-[#0969da] hover:underline"
-                  >
-                    github/{personalInfo.username}
-                  </a>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Linkedin className="w-4 h-4 text-[#656d76] flex-shrink-0" />
-                  <a 
-                    href={personalInfo.social.linkedin.url} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="text-[#0969da] hover:underline"
-                  >
-                    linkedin/in/ujjwal-gupta
-                  </a>
-                </div>
-              </div>
-
-              {/* Quick Counter Chips */}
-              <div className="pt-3 border-t border-[#d0d7de] grid grid-cols-3 gap-2 text-center">
-                <a href="#projects" className="p-2 rounded bg-[#f6f8fa] border border-[#d0d7de] hover:bg-[#f3f4f6]">
-                  <div className="text-base font-bold text-[#1f2328] font-mono">{allProjects.length}</div>
-                  <div className="text-[10px] text-[#656d76]">Projects</div>
-                </a>
-                <a href="#experience" className="p-2 rounded bg-[#f6f8fa] border border-[#d0d7de] hover:bg-[#f3f4f6]">
-                  <div className="text-base font-bold text-[#1f2328] font-mono">{internships.length}</div>
-                  <div className="text-[10px] text-[#656d76]">Internships</div>
-                </a>
-                <a href="#skills" className="p-2 rounded bg-[#f6f8fa] border border-[#d0d7de] hover:bg-[#f3f4f6]">
-                  <div className="text-base font-bold text-[#1f2328] font-mono">4</div>
-                  <div className="text-[10px] text-[#656d76]">Languages</div>
-                </a>
-              </div>
-
+          {/* Left Column: Personal Narrative & CTAs */}
+          <div className="lg:col-span-7 text-left space-y-6">
+            
+            {/* Status Pill with Animated Glowing Pulse */}
+            <div className="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-white/90 border border-indigo-200/80 shadow-sm shadow-indigo-500/10 backdrop-blur-md">
+              <span className="flex h-2.5 w-2.5 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              <span className="text-xs font-bold text-slate-700 tracking-wide flex items-center space-x-1">
+                <span>Available for Full Stack Opportunities & Projects</span>
+                <Sparkles className="w-3.5 h-3.5 text-amber-500 ml-1" />
+              </span>
             </div>
+
+            {/* Main Headings */}
+            <div className="space-y-2">
+              <p className="text-sm font-bold tracking-widest uppercase text-indigo-600 flex items-center space-x-1.5 font-mono">
+                <span>Hi, I'm</span>
+              </p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight font-heading leading-[1.05]">
+                {personalInfo.name}
+              </h1>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold gradient-text-primary font-heading pt-1">
+                {personalInfo.role}
+              </h2>
+            </div>
+
+            {/* Tagline */}
+            <p className="text-xl sm:text-2xl font-bold text-slate-800 font-heading">
+              "{personalInfo.tagline}"
+            </p>
+
+            {/* Supporting Description */}
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
+              {personalInfo.heroDescription}
+            </p>
+
+            {/* Location & Academic Chips */}
+            <div className="flex flex-wrap items-center gap-3 text-xs text-slate-700 pt-1">
+              <div className="flex items-center space-x-2 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-xs font-semibold">
+                <MapPin className="w-4 h-4 text-rose-500" />
+                <span>{personalInfo.location.origin}</span>
+              </div>
+              <div className="flex items-center space-x-2 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-xs font-semibold">
+                <GraduationCap className="w-4 h-4 text-indigo-600" />
+                <span>AKGEC • Computer Science</span>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3.5 pt-2">
+              <a
+                href="#projects"
+                className="inline-flex items-center space-x-2.5 px-6 py-3.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 transition-all duration-200"
+              >
+                <span>Explore My Projects</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+
+              <button
+                onClick={onOpenResume}
+                className="inline-flex items-center space-x-2 px-5 py-3.5 rounded-xl font-bold text-sm text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 hover:border-indigo-400 shadow-xs hover:-translate-y-0.5 transition-all duration-200"
+              >
+                <Download className="w-4 h-4 text-indigo-600" />
+                <span>Download Resume</span>
+              </button>
+
+              <a
+                href="#contact"
+                className="inline-flex items-center space-x-2 px-5 py-3.5 rounded-xl font-bold text-sm text-indigo-600 hover:text-indigo-700 bg-indigo-50/80 hover:bg-indigo-100/80 border border-indigo-200/80 transition-all duration-200"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Contact Me</span>
+              </a>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center space-x-4 pt-4 border-t border-slate-200/80">
+              <span className="text-xs uppercase tracking-wider text-slate-500 font-bold">
+                Connect With Me:
+              </span>
+              <a
+                href={personalInfo.social.github.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-white hover:bg-slate-900 text-slate-700 hover:text-white border border-slate-200 shadow-xs transition-all duration-200 text-xs font-semibold group"
+                title={`GitHub: ${personalInfo.social.github.username}`}
+              >
+                <Github className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                <span>github/{personalInfo.social.github.username}</span>
+              </a>
+              <a
+                href={personalInfo.social.linkedin.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-white hover:bg-blue-600 text-slate-700 hover:text-white border border-slate-200 shadow-xs transition-all duration-200 text-xs font-semibold group"
+                title={`LinkedIn: ${personalInfo.social.linkedin.username}`}
+              >
+                <Linkedin className="w-4 h-4 text-blue-600 group-hover:text-white group-hover:scale-110 transition-transform" />
+                <span>LinkedIn Profile</span>
+              </a>
+            </div>
+
           </div>
 
-          {/* Right Column: README.md Profile Box */}
-          <div className="lg:col-span-8">
-            <div className="gh-box overflow-hidden">
+          {/* Right Column: Creative Developer Showcase Card with Floating Badges */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-md">
               
-              {/* README Header Bar */}
-              <div className="gh-box-header flex items-center justify-between">
-                <div className="flex items-center space-x-2 text-xs font-semibold text-[#1f2328]">
-                  <BookOpen className="w-4 h-4 text-[#656d76]" />
-                  <span>{personalInfo.username} / README.md</span>
-                </div>
-                <div className="flex items-center space-x-2 text-xs text-[#656d76]">
-                  <span>preview</span>
-                </div>
-              </div>
+              {/* Colorful Glowing Ambient Layer behind Card */}
+              <div className="absolute -inset-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl blur-lg opacity-30 group-hover:opacity-50 transition duration-500 -z-10 animate-pulse-slow" />
 
-              {/* Markdown Content */}
-              <div className="p-6 sm:p-8 space-y-5 text-sm text-[#1f2328] leading-relaxed">
+              {/* Main Card */}
+              <div className="portfolio-card p-6 bg-white relative overflow-hidden">
                 
-                <div className="border-b border-[#d0d7de] pb-3">
-                  <h2 className="text-xl sm:text-2xl font-bold flex items-center space-x-2">
-                    <span>Hi there, I'm {personalInfo.name}</span>
-                    <span className="text-base">👋</span>
-                  </h2>
-                  <p className="text-xs text-[#656d76] mt-1 font-mono">
-                    Full Stack Developer • Computer Science Student @ AKGEC
-                  </p>
+                {/* Header Window Bar */}
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-3 h-3 rounded-full bg-rose-500 shadow-xs" />
+                    <div className="w-3 h-3 rounded-full bg-amber-400 shadow-xs" />
+                    <div className="w-3 h-3 rounded-full bg-emerald-500 shadow-xs" />
+                  </div>
+                  <div className="text-xs font-mono font-semibold text-slate-500 flex items-center space-x-1.5">
+                    <Terminal className="w-3.5 h-3.5 text-indigo-600" />
+                    <span>ujjwal.developer.ts</span>
+                  </div>
+                  <div className="w-3 h-3" />
                 </div>
 
-                <p className="text-[#1f2328] leading-relaxed">
-                  {personalInfo.introduction}
-                </p>
-
-                {/* Bullet Points */}
-                <ul className="space-y-2 text-xs sm:text-sm text-[#1f2328] list-disc list-inside">
-                  <li>🔭 <strong>Focus:</strong> Full Stack Web Development & modern application design</li>
-                  <li>🌱 <strong>Core Languages:</strong> C, C++, Java, and Python with algorithmic reasoning</li>
-                  <li>⚡ <strong>Frontend & Backend:</strong> HTML5, CSS3, JavaScript, React.js, Node.js, REST APIs</li>
-                  <li>🎨 <strong>Extracurricular:</strong> Passionate interest in Art and Craft</li>
-                  <li>📍 <strong>Location:</strong> From Prayagraj, UP; studying in Noida region</li>
-                </ul>
-
-                {/* Bottom Action CTA inside README */}
-                <div className="pt-3 border-t border-[#d0d7de] flex flex-wrap items-center justify-between gap-3 text-xs text-[#656d76]">
-                  <div className="flex items-center space-x-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#1f883d]" />
-                    <span>Verified Developer Portfolio</span>
+                {/* Developer ID Header */}
+                <div className="flex items-center space-x-4 p-4 rounded-2xl bg-gradient-to-br from-indigo-50/70 via-purple-50/40 to-pink-50/30 border border-indigo-100/80 mb-5">
+                  <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/25 flex-shrink-0">
+                    <span className="font-extrabold text-lg">UG</span>
+                    <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full" />
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <a href="#projects" className="gh-btn text-xs">
-                      <span>View All 11 Projects</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </a>
+                  <div className="min-w-0">
+                    <h3 className="text-base font-extrabold text-slate-900 font-heading">
+                      {personalInfo.name}
+                    </h3>
+                    <p className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+                      {personalInfo.role}
+                    </p>
+                    <p className="text-[11px] font-semibold text-slate-500 mt-0.5">
+                      AKGEC • Computer Science
+                    </p>
+                  </div>
+                </div>
+
+                {/* Syntax Code Snippet */}
+                <div className="font-mono text-xs bg-slate-900 text-slate-200 rounded-2xl p-4 space-y-1.5 shadow-inner overflow-x-auto">
+                  <div className="text-emerald-400">// Ready to build scalable digital experiences</div>
+                  <div>
+                    <span className="text-indigo-400 font-bold">const</span> <span className="text-amber-300">developer</span> = &#123;
+                  </div>
+                  <div className="pl-4">
+                    name: <span className="text-pink-300 font-semibold">"{personalInfo.name}"</span>,
+                  </div>
+                  <div className="pl-4">
+                    role: <span className="text-cyan-300">"Full Stack Developer"</span>,
+                  </div>
+                  <div className="pl-4">
+                    origin: <span className="text-amber-200">"Prayagraj, UP, India"</span>,
+                  </div>
+                  <div className="pl-4">
+                    languages: [<span className="text-purple-300">"C"</span>, <span className="text-purple-300">"C++"</span>, <span className="text-purple-300">"Java"</span>, <span className="text-purple-300">"Python"</span>],
+                  </div>
+                  <div className="pl-4">
+                    technologies: [<span className="text-cyan-300">"React.js"</span>, <span className="text-emerald-300">"Node.js"</span>, <span className="text-amber-300">"REST APIs"</span>],
+                  </div>
+                  <div className="pl-4">
+                    openToOpportunity: <span className="text-emerald-400 font-bold">true</span>
+                  </div>
+                  <div>&#125;;</div>
+                </div>
+
+                {/* 3 Metric Pills */}
+                <div className="grid grid-cols-3 gap-2.5 mt-5 pt-4 border-t border-slate-100 text-center">
+                  <div className="p-3 rounded-xl bg-indigo-50/60 border border-indigo-100">
+                    <div className="text-lg font-extrabold text-indigo-700 font-heading">{allProjects.length}</div>
+                    <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Projects</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-purple-50/60 border border-purple-100">
+                    <div className="text-lg font-extrabold text-purple-700 font-heading">{internships.length}</div>
+                    <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Internships</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-cyan-50/60 border border-cyan-100">
+                    <div className="text-lg font-extrabold text-cyan-700 font-heading">4+</div>
+                    <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Languages</div>
                   </div>
                 </div>
 
@@ -215,7 +226,6 @@ export default function Hero({ onOpenResume }) {
           </div>
 
         </div>
-
       </div>
     </section>
   );

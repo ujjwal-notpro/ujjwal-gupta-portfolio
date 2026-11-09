@@ -1,82 +1,213 @@
 import React, { useState } from 'react';
 import { 
-  FolderGit2, 
-  Star, 
-  Eye, 
   Github, 
   ExternalLink, 
-  Search, 
-  Filter, 
-  CheckCircle2, 
+  Eye, 
+  Sparkles, 
+  Layers, 
+  CloudSun, 
+  ShoppingCart, 
+  CheckSquare, 
+  UserCheck, 
+  Briefcase, 
+  Gamepad2, 
+  Shapes, 
+  CreditCard, 
+  Globe2,
+  Code,
   Info,
-  BookMarked,
-  Tag
+  ArrowUpRight
 } from 'lucide-react';
-import { allProjects, personalInfo } from '../data/portfolioData';
+import { allProjects } from '../data/portfolioData';
+
+// Custom Aesthetic Colorful Project Visual Showcases
+const ProjectBanner = ({ id }) => {
+  switch (id) {
+    case 1: // Weather App
+      return (
+        <div className="w-full h-48 bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600 flex flex-col items-center justify-center p-4 relative overflow-hidden text-white group-hover:scale-105 transition-transform duration-500">
+          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase border border-white/30">
+            OpenWeatherMap API
+          </div>
+          <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg mb-2">
+            <CloudSun className="w-8 h-8 text-white" />
+          </div>
+          <div className="text-lg font-extrabold tracking-tight">Weather Forecasting App</div>
+          <div className="text-xs font-medium text-white/90 mt-0.5">Live Meteorological Query & Metrics</div>
+        </div>
+      );
+    case 2: // Mini Amazon
+      return (
+        <div className="w-full h-48 bg-gradient-to-br from-amber-400 via-orange-500 to-rose-500 flex flex-col items-center justify-center p-4 relative overflow-hidden text-white group-hover:scale-105 transition-transform duration-500">
+          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase border border-white/30">
+            E-Commerce
+          </div>
+          <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg mb-2">
+            <ShoppingCart className="w-8 h-8 text-white" />
+          </div>
+          <div className="text-lg font-extrabold tracking-tight">Mini Amazon</div>
+          <div className="text-xs font-medium text-white/90 mt-0.5">Product Catalog & Cart Management</div>
+        </div>
+      );
+    case 3: // To-Do List
+      return (
+        <div className="w-full h-48 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 flex flex-col items-center justify-center p-4 relative overflow-hidden text-white group-hover:scale-105 transition-transform duration-500">
+          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase border border-white/30">
+            Productivity
+          </div>
+          <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg mb-2">
+            <CheckSquare className="w-8 h-8 text-white" />
+          </div>
+          <div className="text-lg font-extrabold tracking-tight">Task Management System</div>
+          <div className="text-xs font-medium text-white/90 mt-0.5">DOM Manipulation & Local Storage</div>
+        </div>
+      );
+    case 4: // Personal Portfolio
+      return (
+        <div className="w-full h-48 bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 flex flex-col items-center justify-center p-4 relative overflow-hidden text-white group-hover:scale-105 transition-transform duration-500">
+          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase border border-white/30">
+            Developer Portfolio
+          </div>
+          <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg mb-2">
+            <Globe2 className="w-8 h-8 text-white" />
+          </div>
+          <div className="text-lg font-extrabold tracking-tight">Personal Portfolio</div>
+          <div className="text-xs font-medium text-white/90 mt-0.5">React.js & Tailwind CSS</div>
+        </div>
+      );
+    case 5: // Mini Portfolio
+      return (
+        <div className="w-full h-48 bg-gradient-to-br from-blue-500 via-indigo-600 to-violet-700 flex flex-col items-center justify-center p-4 relative overflow-hidden text-white group-hover:scale-105 transition-transform duration-500">
+          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase border border-white/30">
+            Landing Page
+          </div>
+          <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg mb-2">
+            <Code className="w-8 h-8 text-white" />
+          </div>
+          <div className="text-lg font-extrabold tracking-tight">Mini Portfolio</div>
+          <div className="text-xs font-medium text-white/90 mt-0.5">Lightweight & Responsive Layout</div>
+        </div>
+      );
+    case 6: // Login Page
+      return (
+        <div className="w-full h-48 bg-gradient-to-br from-purple-500 via-fuchsia-600 to-pink-600 flex flex-col items-center justify-center p-4 relative overflow-hidden text-white group-hover:scale-105 transition-transform duration-500">
+          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase border border-white/30">
+            Auth UI
+          </div>
+          <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg mb-2">
+            <UserCheck className="w-8 h-8 text-white" />
+          </div>
+          <div className="text-lg font-extrabold tracking-tight">Authentication Interface</div>
+          <div className="text-xs font-medium text-white/90 mt-0.5">Input Validation & Password Toggle</div>
+        </div>
+      );
+    case 7: // Internship Page
+      return (
+        <div className="w-full h-48 bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-700 flex flex-col items-center justify-center p-4 relative overflow-hidden text-white group-hover:scale-105 transition-transform duration-500">
+          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase border border-white/30">
+            Portal Layout
+          </div>
+          <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg mb-2">
+            <Briefcase className="w-8 h-8 text-white" />
+          </div>
+          <div className="text-lg font-extrabold tracking-tight">Internship Portal Page</div>
+          <div className="text-xs font-medium text-white/90 mt-0.5">Program Details & Criteria</div>
+        </div>
+      );
+    case 8: // Game of Cards
+      return (
+        <div className="w-full h-48 bg-gradient-to-br from-rose-500 via-pink-600 to-purple-600 flex flex-col items-center justify-center p-4 relative overflow-hidden text-white group-hover:scale-105 transition-transform duration-500">
+          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase border border-white/30">
+            Browser Game
+          </div>
+          <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg mb-2">
+            <Gamepad2 className="w-8 h-8 text-white" />
+          </div>
+          <div className="text-lg font-extrabold tracking-tight">Game of Cards</div>
+          <div className="text-xs font-medium text-white/90 mt-0.5">Deck Shuffling & Turn Logic</div>
+        </div>
+      );
+    case 9: // Shape Game
+      return (
+        <div className="w-full h-48 bg-gradient-to-br from-fuchsia-500 via-purple-600 to-indigo-600 flex flex-col items-center justify-center p-4 relative overflow-hidden text-white group-hover:scale-105 transition-transform duration-500">
+          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase border border-white/30">
+            Reflex Game
+          </div>
+          <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg mb-2">
+            <Shapes className="w-8 h-8 text-white" />
+          </div>
+          <div className="text-lg font-extrabold tracking-tight">Shape Game</div>
+          <div className="text-xs font-medium text-white/90 mt-0.5">Reflex Logic & Smooth Transitions</div>
+        </div>
+      );
+    case 10: // Card Design (card.html)
+      return (
+        <div className="w-full h-48 bg-gradient-to-br from-violet-500 via-indigo-600 to-blue-700 flex flex-col items-center justify-center p-4 relative overflow-hidden text-white group-hover:scale-105 transition-transform duration-500">
+          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase border border-white/30">
+            UI Component
+          </div>
+          <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg mb-2">
+            <CreditCard className="w-8 h-8 text-white" />
+          </div>
+          <div className="text-lg font-extrabold tracking-tight">Card Design (card.html)</div>
+          <div className="text-xs font-medium text-white/90 mt-0.5">Advanced CSS & Glassmorphism</div>
+        </div>
+      );
+    case 11: // Ujjwal Personal Website (ujjwal.html)
+      return (
+        <div className="w-full h-48 bg-gradient-to-br from-teal-500 via-cyan-600 to-blue-600 flex flex-col items-center justify-center p-4 relative overflow-hidden text-white group-hover:scale-105 transition-transform duration-500">
+          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase border border-white/30">
+            Personal Web
+          </div>
+          <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg mb-2">
+            <Globe2 className="w-8 h-8 text-white" />
+          </div>
+          <div className="text-lg font-extrabold tracking-tight">Personal Website (ujjwal.html)</div>
+          <div className="text-xs font-medium text-white/90 mt-0.5">Custom HTML & CSS Implementation</div>
+        </div>
+      );
+    default:
+      return null;
+  }
+};
 
 export default function Projects({ onSelectProject }) {
   const [filter, setFilter] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
 
   const categories = ['All', 'Web Apps & APIs', 'Games & Logic', 'UI & Prototypes'];
 
-  const filteredProjects = allProjects.filter((project) => {
-    const matchesCategory = filter === 'All' || project.category === filter;
-    const matchesSearch = 
-      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.techStack.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesCategory && matchesSearch;
-  });
+  const filteredProjects = filter === 'All'
+    ? allProjects
+    : allProjects.filter(p => p.category === filter);
 
   return (
-    <section id="projects" className="py-16 bg-[#ffffff] border-b border-[#d0d7de]">
+    <section id="projects" className="py-24 relative bg-slate-50/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header like GitHub Topic Title */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 mb-8 border-b border-[#d0d7de] gap-4">
-          <div>
-            <div className="flex items-center space-x-2 text-xs font-semibold text-[#656d76] uppercase tracking-wider mb-1">
-              <FolderGit2 className="w-4 h-4 text-[#0969da]" />
-              <span>Repository Catalog</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#1f2328] tracking-tight">
-              All Repositories & Projects ({allProjects.length})
-            </h2>
-            <p className="text-xs sm:text-sm text-[#656d76] mt-1">
-              Curated list of verified personal web applications, APIs, games, and UI components.
-            </p>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full badge-gradient-indigo text-xs font-bold tracking-wide">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Featured Portfolio Showcase</span>
           </div>
-
-          {/* Search & Filter Controls */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-            <div className="relative">
-              <Search className="w-4 h-4 absolute left-3 top-2.5 text-[#656d76]" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Find a repository..."
-                className="pl-9 pr-3 py-1.5 bg-[#f6f8fa] text-xs text-[#1f2328] rounded-md border border-[#d0d7de] focus:bg-[#ffffff] focus:border-[#0969da] focus:ring-1 focus:ring-[#0969da] outline-none w-full sm:w-56"
-              />
-            </div>
-          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 font-heading tracking-tight">
+            My <span className="gradient-text-primary">Projects</span>
+          </h2>
+          <p className="text-base text-slate-600 leading-relaxed">
+            All 11 personal web applications, logic games, and modern UI components built with React.js, JavaScript, and APIs.
+          </p>
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 mb-8">
-          <span className="text-xs font-medium text-[#656d76] mr-1 flex items-center space-x-1">
-            <Filter className="w-3.5 h-3.5" />
-            <span>Type:</span>
-          </span>
+        {/* Filter Pills */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-14">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 ${
                 filter === cat
-                  ? 'bg-[#1f2328] text-[#ffffff]'
-                  : 'bg-[#f6f8fa] text-[#656d76] hover:bg-[#f3f4f6] border border-[#d0d7de]'
+                  ? 'bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white shadow-md shadow-indigo-500/25 scale-105'
+                  : 'bg-white text-slate-600 hover:text-indigo-600 hover:bg-slate-50 border border-slate-200 shadow-xs'
               }`}
             >
               {cat === 'All' ? `All (${allProjects.length})` : cat}
@@ -84,113 +215,89 @@ export default function Projects({ onSelectProject }) {
           ))}
         </div>
 
-        {/* Repository Cards Grid - GitHub Repo Style */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Portfolio Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="gh-box p-5 hover:border-[#0969da]/50 transition-all duration-150 flex flex-col justify-between group shadow-xs bg-[#ffffff]"
+              className="portfolio-card overflow-hidden flex flex-col justify-between bg-white group border-slate-200"
             >
-              <div>
-                {/* Repo Header Bar */}
-                <div className="flex items-start justify-between gap-2 mb-2">
-                  <div className="flex items-center space-x-2 min-w-0">
-                    <BookMarked className="w-4 h-4 text-[#656d76] flex-shrink-0" />
-                    <button
-                      onClick={() => onSelectProject(project)}
-                      className="text-base font-semibold text-[#0969da] hover:underline truncate text-left"
-                    >
-                      {project.slug || project.title.toLowerCase().replace(/ /g, '-')}
-                    </button>
-                    <span className="text-[11px] font-medium text-[#656d76] border border-[#d0d7de] rounded-full px-2 py-0.2 bg-[#f6f8fa] flex-shrink-0">
-                      Public
-                    </span>
-                  </div>
-
-                  <button
-                    onClick={() => onSelectProject(project)}
-                    className="gh-btn text-xs py-1 px-2.5 flex-shrink-0"
-                    title="Live Demo Preview"
-                  >
-                    <Eye className="w-3.5 h-3.5 text-[#0969da]" />
-                    <span>Demo</span>
-                  </button>
-                </div>
-
-                {/* Display Title & Description */}
-                <div className="text-xs font-semibold text-[#1f2328] mb-1">
-                  {project.title}
-                </div>
-                <p className="text-xs text-[#656d76] leading-relaxed line-clamp-2 mb-3">
-                  {project.description}
-                </p>
-
-                {/* Topic Pills */}
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {(project.topics || project.techStack).map((tag) => (
-                    <span
-                      key={tag}
-                      className="gh-topic"
-                    >
-                      {tag.toLowerCase().replace(/[^a-z0-9]/g, '-')}
-                    </span>
-                  ))}
+              {/* Visual Showcase Banner */}
+              <div className="relative overflow-hidden">
+                <ProjectBanner id={project.id} />
+                
+                {/* Number Badge */}
+                <div className="absolute bottom-3 right-3 text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-black/40 backdrop-blur-md text-white border border-white/20">
+                  #{project.id.toString().padStart(2, '0')}
                 </div>
               </div>
 
-              {/* Bottom Meta & Language Color Dot */}
-              <div className="pt-3 border-t border-[#d0d7de]/70 flex flex-wrap items-center justify-between text-xs text-[#656d76] gap-2">
-                <div className="flex items-center space-x-4">
-                  {/* Primary Language Colored Dot */}
-                  <div className="flex items-center space-x-1.5">
-                    <span 
-                      className="w-3 h-3 rounded-full inline-block"
-                      style={{ backgroundColor: project.languageColor || '#f1e05a' }}
-                    />
-                    <span className="font-medium text-[#1f2328]">
-                      {project.primaryLanguage || project.techStack[0]}
+              {/* Card Body */}
+              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                
+                <div className="space-y-2">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-indigo-600">
+                    {project.category}
+                  </div>
+                  <h3 className="text-xl font-extrabold text-slate-900 font-heading group-hover:text-indigo-600 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                {/* Tech Pills */}
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  {project.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-100"
+                    >
+                      {tech}
                     </span>
-                  </div>
-
-                  {/* Star count simulation */}
-                  <div className="flex items-center space-x-1 hover:text-[#0969da] cursor-pointer">
-                    <Star className="w-3.5 h-3.5" />
-                    <span>{project.id * 3 + 4}</span>
-                  </div>
+                  ))}
                 </div>
 
-                <div className="flex items-center space-x-2">
-                  <a
-                    href="https://github.com/ujjwal-notpro060406"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="gh-btn text-[11px] py-0.5 px-2"
-                  >
-                    <Github className="w-3 h-3" />
-                    <span>Repo</span>
-                  </a>
+                {/* Status Indicator */}
+                <div className="pt-2 flex items-center space-x-1.5 text-[11px] font-medium text-slate-500">
+                  <Info className="w-3.5 h-3.5 text-indigo-600 flex-shrink-0" />
+                  <span className="truncate">{project.statusNote}</span>
                 </div>
+
+              </div>
+
+              {/* Card Footer Actions */}
+              <div className="p-4 sm:px-6 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between gap-2.5">
+                <a
+                  href="https://github.com/ujjwal-notpro060406"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 inline-flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-bold bg-white hover:bg-slate-100 text-slate-800 border border-slate-200 shadow-xs transition-colors"
+                  title="View GitHub Profile"
+                >
+                  <Github className="w-3.5 h-3.5 text-slate-800" />
+                  <span>GitHub</span>
+                </a>
+
+                <button
+                  onClick={() => onSelectProject(project)}
+                  className="flex-1 inline-flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-bold bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-md shadow-indigo-500/25 transition-all duration-200"
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  <span>Live Demo</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </button>
               </div>
 
             </div>
           ))}
         </div>
 
-        {/* Note on Verified Data */}
-        <div className="mt-8 p-3.5 rounded-md bg-[#f6f8fa] border border-[#d0d7de] text-xs text-[#656d76] flex items-center justify-between flex-wrap gap-2">
-          <div className="flex items-center space-x-2">
-            <CheckCircle2 className="w-4 h-4 text-[#1f883d] flex-shrink-0" />
-            <span>Showing all 11 verified repositories. Click on any repository title or <strong>Demo</strong> to inspect interactive previews.</span>
-          </div>
-          <a
-            href={personalInfo.social.github.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#0969da] font-medium hover:underline flex items-center space-x-1"
-          >
-            <span>Visit @{personalInfo.username} on GitHub</span>
-            <ExternalLink className="w-3 h-3" />
-          </a>
+        {/* Verification Guarantee */}
+        <div className="mt-14 text-center text-xs text-slate-600 max-w-2xl mx-auto flex items-center justify-center space-x-2 bg-white py-3.5 px-5 rounded-2xl border border-slate-200 shadow-xs">
+          <Sparkles className="w-4 h-4 text-indigo-600 flex-shrink-0" />
+          <span>All 11 projects represent authentic works by Ujjwal Gupta. Click <strong>Live Demo</strong> to launch interactive previews.</span>
         </div>
 
       </div>

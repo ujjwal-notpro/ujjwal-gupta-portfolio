@@ -21,7 +21,8 @@ import {
   Globe, 
   Database, 
   AppWindow,
-  CheckCircle2
+  CheckCircle2,
+  Sparkles
 } from 'lucide-react';
 import { skillCategories } from '../data/portfolioData';
 
@@ -50,84 +51,105 @@ const iconMap = {
 };
 
 export default function Skills() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState('All');
 
-  const filtered = selectedCategory === 'All'
-    ? skillCategories
-    : skillCategories.filter(c => c.category === selectedCategory);
+  const categories = ['All', ...skillCategories.map(c => c.category)];
+
+  const filtered = activeCategory === 'All' 
+    ? skillCategories 
+    : skillCategories.filter(c => c.category === activeCategory);
 
   return (
-    <section id="skills" className="py-16 bg-[#ffffff] border-b border-[#d0d7de]">
+    <section id="skills" className="py-24 relative bg-gradient-to-b from-white via-slate-50/50 to-white">
+      {/* Background Soft Orbs */}
+      <div className="absolute top-1/2 right-10 w-80 h-80 bg-indigo-100/40 rounded-full blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-cyan-100/40 rounded-full blur-[120px] pointer-events-none -z-10" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-6 mb-8 border-b border-[#d0d7de] gap-4">
-          <div>
-            <div className="flex items-center space-x-2 text-xs font-semibold text-[#656d76] uppercase tracking-wider mb-1">
-              <Cpu className="w-4 h-4 text-[#0969da]" />
-              <span>Developer Competencies</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#1f2328] tracking-tight">
-              Technical Stack & Skills
-            </h2>
-            <p className="text-xs sm:text-sm text-[#656d76] mt-1">
-              Verified programming languages, frontend/backend libraries, frameworks, and developer tools.
-            </p>
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full badge-gradient-indigo text-xs font-bold tracking-wide">
+            <Cpu className="w-3.5 h-3.5" />
+            <span>Technical Capabilities</span>
           </div>
-
-          <div className="flex flex-wrap gap-1.5">
-            {['All', ...skillCategories.map(c => c.category)].map(cat => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  selectedCategory === cat
-                    ? 'bg-[#1f2328] text-[#ffffff]'
-                    : 'bg-[#f6f8fa] text-[#656d76] hover:bg-[#f3f4f6] border border-[#d0d7de]'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 font-heading tracking-tight">
+            Technical <span className="gradient-text-primary">Skills</span>
+          </h2>
+          <p className="text-base text-slate-600 leading-relaxed">
+            A comprehensive, verified toolkit of programming languages, frontend and backend technologies, frameworks, and developer workflows.
+          </p>
         </div>
 
-        {/* Categorized Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Category Filter Pills */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-14">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 ${
+                activeCategory === cat
+                  ? 'bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white shadow-md shadow-indigo-500/25 scale-105'
+                  : 'bg-white text-slate-600 hover:text-indigo-600 hover:bg-slate-50 border border-slate-200 shadow-xs'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Skills Categories Grid */}
+        <div className="space-y-10">
           {filtered.map((group) => (
-            <div key={group.category} className="gh-box overflow-hidden flex flex-col justify-between">
-              
+            <div 
+              key={group.category}
+              className="portfolio-card p-6 sm:p-8 bg-white border border-slate-200 relative overflow-hidden"
+            >
               {/* Category Header */}
-              <div className="gh-box-header flex items-center justify-between">
-                <h3 className="text-sm font-bold text-[#1f2328] flex items-center space-x-2">
-                  <span>{group.category}</span>
-                </h3>
-                <span className="text-[11px] font-mono text-[#656d76] bg-[#afb8c133] px-2 py-0.5 rounded-full">
-                  {group.skills.length}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-slate-100 gap-2">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 font-heading flex items-center space-x-3">
+                    <span className="w-3 h-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600" />
+                    <span>{group.category}</span>
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                    {group.description}
+                  </p>
+                </div>
+                <span className="text-xs font-bold text-indigo-700 bg-indigo-50 px-3.5 py-1.5 rounded-full self-start sm:self-auto border border-indigo-100">
+                  {group.skills.length} Technologies
                 </span>
               </div>
 
-              {/* Skills List with Language Colored Dots */}
-              <div className="p-4 space-y-2.5">
+              {/* Skills Cards Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {group.skills.map((skill) => {
-                  const Icon = iconMap[skill.icon] || Code2;
+                  const IconComponent = iconMap[skill.icon] || Code2;
                   return (
                     <div
                       key={skill.name}
-                      className="flex items-center justify-between p-2 rounded hover:bg-[#f6f8fa] transition-colors border border-transparent hover:border-[#d0d7de]"
+                      className="group p-4 rounded-2xl bg-slate-50/70 hover:bg-white border border-slate-200/80 hover:border-indigo-300 hover:shadow-lg hover:shadow-indigo-500/10 hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between"
                     >
-                      <div className="flex items-center space-x-2.5">
-                        <span 
-                          className="w-3 h-3 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: skill.color || '#0969da' }}
-                        />
-                        <span className="text-xs font-semibold text-[#1f2328]">
-                          {skill.name}
+                      <div className="flex items-center justify-between mb-3">
+                        <div 
+                          className="w-11 h-11 rounded-xl flex items-center justify-center shadow-xs transition-transform group-hover:scale-110"
+                          style={{ 
+                            backgroundColor: `${skill.color || '#6366f1'}15`,
+                            color: skill.color || '#4f46e5',
+                            border: `1px solid ${skill.color || '#6366f1'}30`
+                          }}
+                        >
+                          <IconComponent className="w-5 h-5" />
+                        </div>
+                        <span className="text-[10px] font-mono font-bold text-slate-500 bg-white px-2 py-0.5 rounded-md border border-slate-200">
+                          {skill.badge}
                         </span>
                       </div>
-                      <span className="text-[11px] font-mono text-[#656d76] bg-[#f6f8fa] border border-[#d0d7de] px-2 py-0.5 rounded">
-                        {skill.badge}
-                      </span>
+                      <div>
+                        <h4 className="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                          {skill.name}
+                        </h4>
+                      </div>
                     </div>
                   );
                 })}
@@ -137,10 +159,10 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Verified Notice */}
-        <div className="mt-8 text-center text-xs text-[#656d76] max-w-xl mx-auto flex items-center justify-center space-x-2 bg-[#f6f8fa] py-3 px-4 rounded-md border border-[#d0d7de]">
-          <CheckCircle2 className="w-4 h-4 text-[#1f883d] flex-shrink-0" />
-          <span>Authentic proficiencies verified from actual development projects. No artificial ratings.</span>
+        {/* Verification Note */}
+        <div className="mt-12 text-center text-xs text-slate-600 max-w-2xl mx-auto flex items-center justify-center space-x-2 bg-white py-3.5 px-5 rounded-2xl border border-slate-200 shadow-xs">
+          <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+          <span>All technologies listed are authentic skills from my actual development stack. No artificial skill percentages.</span>
         </div>
 
       </div>

@@ -8,98 +8,179 @@ import {
   User, 
   Terminal, 
   CheckCircle2,
-  FileText
+  Sparkles,
+  Heart
 } from 'lucide-react';
 import { personalInfo, aboutData } from '../data/portfolioData';
 
 export default function About() {
   return (
-    <section id="about" className="py-16 bg-[#ffffff] border-b border-[#d0d7de]">
+    <section id="about" className="py-24 relative bg-white">
+      {/* Background Soft Color Accents */}
+      <div className="absolute top-1/2 left-0 w-72 h-72 bg-purple-100/50 rounded-full blur-[100px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-0 w-72 h-72 bg-cyan-100/50 rounded-full blur-[100px] pointer-events-none -z-10" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="pb-6 mb-8 border-b border-[#d0d7de]">
-          <div className="flex items-center space-x-2 text-xs font-semibold text-[#656d76] uppercase tracking-wider mb-1">
-            <User className="w-4 h-4 text-[#0969da]" />
-            <span>Developer Profile</span>
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full badge-gradient-indigo text-xs font-bold tracking-wide">
+            <User className="w-3.5 h-3.5" />
+            <span>Discover My Story</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#1f2328] tracking-tight">
-            About Me
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 font-heading tracking-tight">
+            About <span className="gradient-text-primary">Me</span>
           </h2>
-          <p className="text-xs sm:text-sm text-[#656d76] mt-1">
-            Detailed background in Computer Science, full-stack engineering, and creative extracurricular pursuits.
+          <p className="text-base text-slate-600 leading-relaxed">
+            A genuine overview of my computer science journey, full stack web development passions, and creative mindset.
           </p>
         </div>
 
         {/* Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
-          {/* Narrative */}
-          <div className="lg:col-span-8">
-            <div className="gh-box overflow-hidden">
-              <div className="gh-box-header flex items-center space-x-2 text-xs font-semibold text-[#1f2328]">
-                <FileText className="w-4 h-4 text-[#656d76]" />
-                <span>Biography & Development Journey</span>
+          {/* Main Narrative Card */}
+          <div className="lg:col-span-7 flex flex-col justify-between">
+            <div className="portfolio-card p-7 sm:p-9 bg-white h-full flex flex-col justify-between space-y-6">
+              
+              <div className="space-y-4">
+                <div className="inline-flex items-center space-x-2.5 pb-2">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-sm shadow-indigo-500/20">
+                    <Code className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-2xl font-extrabold text-slate-900 font-heading">
+                    Passionate Developer & Problem Solver
+                  </h3>
+                </div>
+
+                <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
+                  <p>
+                    My name is <strong className="text-slate-900 font-semibold">Ujjwal Gupta</strong>, and I am a Computer Science student with a keen focus on <strong className="text-indigo-600 font-semibold">Full Stack Web Development</strong>. Originally from <span className="text-slate-900 font-medium">Prayagraj, Uttar Pradesh</span>, I am currently pursuing technical academics in the Noida region at Ajay Kumar Garg Engineering College (AKGEC).
+                  </p>
+                  <p>
+                    I genuinely enjoy developing responsive, user-friendly websites and web applications. Over the course of my learning and project work, I have worked across both <span className="text-slate-900 font-semibold">frontend and backend technologies</span>, building component-driven React applications and connecting practical REST APIs.
+                  </p>
+                  <p>
+                    I have built solid foundations in multiple programming languages including <span className="text-indigo-600 font-bold">C, C++, Java, and Python</span>, which allows me to approach problems with algorithmic reasoning and structured thinking.
+                  </p>
+                  <p>
+                    Through practical internship experiences, I have gained real-world development exposure and collaborative coding insight. Outside programming, I have a passionate interest in <strong className="text-purple-600 font-bold">art and craft</strong> as an extracurricular activity, which enhances my attention to visual detail, aesthetic balance, and intuitive user experiences.
+                  </p>
+                </div>
               </div>
-              <div className="p-6 space-y-4 text-xs sm:text-sm text-[#1f2328] leading-relaxed">
-                <p>
-                  My name is <strong className="font-semibold">Ujjwal Gupta</strong>, and I am a Computer Science student with a passionate focus on <strong className="text-[#0969da] font-semibold">Full Stack Web Development</strong>. Originally from <span className="font-medium">Prayagraj, Uttar Pradesh</span>, I am currently pursuing technical academics in the Noida region at Ajay Kumar Garg Engineering College (AKGEC).
+
+              {/* Direct Quote Box */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-indigo-50/80 via-purple-50/60 to-pink-50/40 border border-indigo-100 shadow-xs">
+                <p className="text-xs sm:text-sm text-slate-800 italic font-semibold leading-relaxed">
+                  "My goal is to become a skilled software developer and contribute to building impactful and scalable digital solutions."
                 </p>
-                <p>
-                  I enjoy developing websites and functional web applications that solve real-world problems. Over the course of my coursework and personal projects, I have worked across both frontend and backend technologies, building interactive user interfaces with React.js and connecting server-side REST APIs.
-                </p>
-                <p>
-                  I have built foundational competence in multiple programming languages including <span className="font-semibold text-[#1f2328]">C, C++, Java, and Python</span>, which allows me to approach problems with strong algorithmic fundamentals.
-                </p>
-                <p>
-                  Through multiple practical internships, I have gained real-world development exposure and collaborative coding experience. Outside programming, I have an interest in <strong className="font-semibold text-[#8250df]">art and craft</strong> as an extracurricular activity, which enhances my attention to visual detail, component hierarchy, and user-centric design.
-                </p>
+                <span className="text-[11px] font-bold text-indigo-600 mt-1 block">
+                  — Ujjwal Gupta
+                </span>
               </div>
+
             </div>
           </div>
 
-          {/* Key Facts */}
-          <div className="lg:col-span-4 space-y-3">
-            <div className="gh-box p-4 space-y-3 text-xs">
-              <div className="font-bold text-[#1f2328] pb-2 border-b border-[#d0d7de]">
-                Quick Facts
-              </div>
-              <div className="flex items-center space-x-2.5">
-                <GraduationCap className="w-4 h-4 text-[#0969da]" />
+          {/* Right Highlights Cards */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
+              
+              {/* Card 1: Academic Focus */}
+              <div className="portfolio-card p-5 bg-white flex flex-col justify-between border-slate-200">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-500 to-indigo-600 text-white flex items-center justify-center shadow-md shadow-indigo-500/20 mb-3">
+                  <GraduationCap className="w-6 h-6" />
+                </div>
                 <div>
-                  <div className="font-semibold">College Student</div>
-                  <div className="text-[#656d76]">AKGEC • Computer Science</div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600">
+                    Academic Focus
+                  </span>
+                  <h4 className="text-sm sm:text-base font-extrabold text-slate-900 mt-0.5">
+                    Computer Science
+                  </h4>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    AKGEC (Noida/Ghaziabad)
+                  </p>
                 </div>
               </div>
-              <div className="flex items-center space-x-2.5">
-                <Code className="w-4 h-4 text-[#1a7f37]" />
+
+              {/* Card 2: Development Focus */}
+              <div className="portfolio-card p-5 bg-white flex flex-col justify-between border-slate-200">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-white flex items-center justify-center shadow-md shadow-cyan-500/20 mb-3">
+                  <Code className="w-6 h-6" />
+                </div>
                 <div>
-                  <div className="font-semibold">Core Focus</div>
-                  <div className="text-[#656d76]">Full Stack Web (React & Node)</div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-600">
+                    Specialization
+                  </span>
+                  <h4 className="text-sm sm:text-base font-extrabold text-slate-900 mt-0.5">
+                    Full Stack Web
+                  </h4>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    React.js & Node.js
+                  </p>
                 </div>
               </div>
-              <div className="flex items-center space-x-2.5">
-                <Briefcase className="w-4 h-4 text-[#0969da]" />
+
+              {/* Card 3: Creative Hobby */}
+              <div className="portfolio-card p-5 bg-white flex flex-col justify-between border-slate-200">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-500 to-pink-500 text-white flex items-center justify-center shadow-md shadow-purple-500/20 mb-3">
+                  <Palette className="w-6 h-6" />
+                </div>
                 <div>
-                  <div className="font-semibold">Internships</div>
-                  <div className="text-[#656d76]">BeeSkilled • Vault • UptoSkills</div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-purple-600">
+                    Extracurricular
+                  </span>
+                  <h4 className="text-sm sm:text-base font-extrabold text-slate-900 mt-0.5">
+                    Art and Craft
+                  </h4>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    Creative Visual Eye
+                  </p>
                 </div>
               </div>
-              <div className="flex items-center space-x-2.5">
-                <Palette className="w-4 h-4 text-[#8250df]" />
+
+              {/* Card 4: Internships */}
+              <div className="portfolio-card p-5 bg-white flex flex-col justify-between border-slate-200">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 text-white flex items-center justify-center shadow-md shadow-emerald-500/20 mb-3">
+                  <Briefcase className="w-6 h-6" />
+                </div>
                 <div>
-                  <div className="font-semibold">Extracurricular</div>
-                  <div className="text-[#656d76]">Art & Craft Hobby</div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600">
+                    Work History
+                  </span>
+                  <h4 className="text-sm sm:text-base font-extrabold text-slate-900 mt-0.5">
+                    3 Internships
+                  </h4>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    BeeSkilled • Vault • UptoSkills
+                  </p>
                 </div>
               </div>
-              <div className="flex items-center space-x-2.5">
-                <MapPin className="w-4 h-4 text-[#cf222e]" />
-                <div>
-                  <div className="font-semibold">Origin</div>
-                  <div className="text-[#656d76]">Prayagraj, Uttar Pradesh</div>
+
+              {/* Card 5: Geographic Roots */}
+              <div className="portfolio-card p-5 bg-white sm:col-span-2 border-slate-200">
+                <div className="flex items-center space-x-3.5 mb-2">
+                  <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-500 to-rose-500 text-white flex items-center justify-center shadow-md shadow-amber-500/20 flex-shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-amber-600">
+                      Geographic Background
+                    </span>
+                    <h4 className="text-sm font-extrabold text-slate-900">
+                      From Prayagraj, Uttar Pradesh, India
+                    </h4>
+                  </div>
                 </div>
+                <p className="text-xs text-slate-500 leading-relaxed pl-14">
+                  Born and raised in Prayagraj; currently pursuing technical education and full-stack software development in the Noida region.
+                </p>
               </div>
+
             </div>
+
           </div>
 
         </div>
